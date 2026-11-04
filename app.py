@@ -21,8 +21,10 @@ menus = {
 choices = [name for name, price, is_spicy in menus[category] if price <= budget and (spicy or not is_spicy)]
 
 left, right = st.columns(2)                 # 화면을 두 칸으로 나눔
-left.metric("조건에 맞는 메뉴", f"{len(choices)}개")
-right.metric("예산", f"{budget:,}원")
+left.caption("조건에 맞는 메뉴")
+left.subheader(f"{len(choices)}개")
+right.caption("예산")
+right.subheader(f"{budget:,}원")
 
 if choices:
     st.write("추천 :", " · ".join(choices))
